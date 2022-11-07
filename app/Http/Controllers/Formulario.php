@@ -29,15 +29,26 @@ class Formulario extends Controller
         $validated = $request->validated();
         $validated['valorInvestido'] = (int)$validated['valorInvestido'];
 
-        //Estético, define um nome para o perfil segundo o 'Tipo de Risco' escolhido no formulário para apresentação na próxima tela
-        $perfil['nome'] = TiposRiscos::nomearPerfil($validated['tipoRisco']);
+        try {
 
-        //Estético, transmite o Objetivo selecionado no formulário para a próxima tela
-        $perfil['objetivo'] =  Objetivos::nome($validated['objetivo']);
+            //Estético, define um nome para o perfil segundo o 'Tipo de Risco' escolhido no formulário para apresentação na próxima tela
+            $perfil['nome'] = TiposRiscos::nomearPerfil($validated['tipoRisco']);
 
-        //Importante, transmite os investimentos sugeridos para a tela de resultados
-        $perfil['investimentos'] = Investimentos::getResult($validated);
+            //Estético, transmite o Objetivo selecionado no formulário para a próxima tela
+            $perfil['objetivo'] =  Objetivos::nome($validated['objetivo']);
 
-        return view('resultado', $perfil);
+            //Importante, transmite os investimentos sugeridos para a tela de resultados
+            $perfil['investimentos'] = Investimentos::getResult($validated);
+
+            return view('resultado', $perfil);
+
+        }
+        catch (\Exception $exception){
+
+             return redirect()->Route('form.index')
+                 ->withErrors(['query'=>'Desculpe, não localizamos o seu investimento. Tente novamente mais tarde!', 'exception'=>$exception->getMessage()])
+                 ->withInput();
+        }
+
     }
 }

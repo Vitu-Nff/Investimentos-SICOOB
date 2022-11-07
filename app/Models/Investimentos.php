@@ -26,7 +26,7 @@ class Investimentos extends Model
             ->where('IdTempoInvestimento', $input['tempoInvestimento'])
             ->where('IdObjetivo', $input['objetivo'])
 
-            ->select('i.IdInvestimento','m.NomeModalidade','m.Descricao');
+            ->select('i.IdInvestimento','m.NomeModalidade','m.Descrica');
 
         return $query->get();
     }

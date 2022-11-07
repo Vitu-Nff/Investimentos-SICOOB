@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Formulario::class, 'index'])->name('form.index');
+Route::get('/{exception?}', [Formulario::class, 'index'])->name('form.index');
 Route::post('/resultado/', [Formulario::class, 'resultado'])->name('form.resultado');
 

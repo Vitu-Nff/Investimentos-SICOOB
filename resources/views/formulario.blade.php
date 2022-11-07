@@ -76,8 +76,10 @@
                     @enderror
                 </fieldset>
             </fieldset>
-
             <button type="submit" class="mt-4"><a class="buttonText"></a></button>
+                @error('query')
+                <p class="text-center text-red-600 text-sm">{{$message}}</p>
+                @enderror
                 <a class="block text-sm sicoob-quasiwhite w-full text-center">Precisa de ajuda? <span class="sicoob-lightocean">Toque aqui!</span></a>
             </fieldset>
         </form>

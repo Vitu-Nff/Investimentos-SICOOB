@@ -19,32 +19,36 @@
                    <p class="tracking-wide text-white text-sm font-light w-full">{{$investimentos[0]->Descricao}}</p>
                </section>
 
-                <section class="links flex flex-row gap-6">
-                    <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
-                    <button class="tracking-wide transition rounded-lg bg-sicoob-lightocean-fade py-1 px-4 text-sm font-medium text-white hover:scale-105 hover:bg-cyan-900"><a href="/">Refazer</a></button>
-                </section>
-            </div>
-            <div class="flex flex-col lg:flex-row gap-4">
-                <div class="bg-sicoob-lightocean fadeIn_2s containerOpcao lg:min-h-64 w-full">
-                    <section class="title mb-4">
-                        <h1 class="tracking-wide text-white text-3xl font-medium w-full">{{$investimentos[1]->NomeModalidade}}</h1>
-                        <p class="text-white text-sm font-extralight w-full">{{$investimentos[1]->Descricao}}</p>
-                    </section>
-
-                    <section class="links flex flex-row gap-3">
-                        <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
-                    </section>
+                @if( isset($investimentos[1]) )
+                        <section class="links flex flex-row gap-6">
+                            <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
+                            <button class="tracking-wide transition rounded-lg bg-sicoob-lightocean-fade py-1 px-4 text-sm font-medium text-white hover:scale-105 hover:bg-cyan-900"><a href="/">Refazer</a></button>
+                        </section>
                 </div>
-                <div class="bg-sicoob-darkocean fadeIn_3s containerOpcao lg:min-h-64 w-full">
-                    <section class="title mb-4">
-                        <h1 class="tracking-wide text-white text-3xl font-medium w-full">{{$investimentos[2]->NomeModalidade}}</h1>
-                        <p class="text-white text-sm font-extralight w-full">{{$investimentos[2]->Descricao}}</p>
-                    </section>
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <div class="bg-sicoob-lightocean fadeIn_2s containerOpcao lg:min-h-64 w-full">
+                        <section class="title mb-4">
+                            <h1 class="tracking-wide text-white text-3xl font-medium w-full">{{$investimentos[1]->NomeModalidade}}</h1>
+                            <p class="text-white text-sm font-extralight w-full">{{$investimentos[1]->Descricao}}</p>
+                        </section>
 
-                    <section class="links flex flex-row gap-3">
-                        <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
-                    </section>
-                </div>
+                        <section class="links flex flex-row gap-3">
+                            <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
+                        </section>
+                    </div>
+                    @if(isset($investimentos[2]))
+                        <div class="bg-sicoob-darkocean fadeIn_3s containerOpcao lg:min-h-64 w-full">
+                            <section class="title mb-4">
+                                <h1 class="tracking-wide text-white text-3xl font-medium w-full">{{$investimentos[2]->NomeModalidade}}</h1>
+                                <p class="text-white text-sm font-extralight w-full">{{$investimentos[2]->Descricao}}</p>
+                            </section>
+
+                            <section class="links flex flex-row gap-3">
+                                <button class="tracking-wide transition rounded-lg bg-white py-1 px-4 text-sm font-medium sicoob-lightocean hover:scale-105 hover:bg-cyan-900 hover:text-white"><a href="/">Simular</a></button>
+                            </section>
+                        </div>
+                    @endif
+                @endif
             </div>
         </div>
 
